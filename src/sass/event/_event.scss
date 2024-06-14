@@ -1,0 +1,53 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.events {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.event {
+    // background-color: lighten(v.$coral_red, 1%);
+    background-color: v.$coral_red;
+
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+
+    &:hover {
+        background-color: v.$portland_orange;
+        cursor: pointer;
+    }
+
+    &--active {
+        background-color: v.$portland_orange;
+    }
+
+    &__cont-title {
+        word-wrap: break-word;
+        line-height: 1.5;
+    }
+   
+    &__title {
+        color: v.$white;
+        font-weight: bold;
+        margin: 0;
+        font-size: 1.3rem;
+    }
+
+    &__schedule {
+        font-weight: 400;
+        color: v.$white;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__date {
+        color: v.$white;
+        margin: 0;
+        font-size: 1.3rem;
+    }
+}

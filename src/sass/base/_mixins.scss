@@ -1,0 +1,63 @@
+@use 'variables' as v; 
+
+/** Media Queries **/
+@mixin phone {
+    @media (min-width: v.$phone) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+  
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+@mixin large-desktop {
+    @media (min-width: v.$large-desktop) {
+        @content;
+    }
+}
+
+@mixin larger-desktop {
+    @media (min-width: v.$larger-desktop) {
+        @content;
+    }
+}
+
+@mixin button($color, $text) {
+    background-color: $color;
+    font-size: 1.8rem;
+    padding: 1.2rem 3rem;
+    border-radius: .5rem;
+    font-weight: 700;
+    display: inline-block;
+    // width: 100%;
+    text-align: center;
+    color: $text;
+    text-decoration: none;
+    transition: background-color .3s ease;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+        background-color: darken($color, 10);
+    }
+
+    @include tablet {
+        // width: auto;
+    }
+}
+
+
+@mixin grid($columns, $spacing) {
+    display: grid;
+    gap: $spacing;
+    grid-template-columns: repeat($columns, 1fr);
+}

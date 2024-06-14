@@ -1,0 +1,235 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.calendar {
+    background-color: v.$white;
+    border-radius: .5rem;
+    width: 90%;
+    max-width: 30rem;
+    padding: 2.5rem 2.3rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.9rem;
+    
+    @include m.phone { 
+        width: 60%;
+    }
+
+    @include m.tablet { 
+        width: 50%;    
+    }
+
+    &__month {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__month-text {
+        font-weight: bold;
+        margin: 0;
+        user-select: none;
+
+    }
+
+    &__chev-cont {
+        display: flex;
+        gap: .5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__chevron-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: v.$white;
+        color: v.$secondary_black;
+
+        &:hover {
+            background-color: v.$secondary_black;
+            color: v.$white;
+        }
+    }
+
+    &__days {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        // margin-top: 1.9rem;
+    }
+
+    &__grid {
+        height: 28rem; //si lo borro ocurre bug
+        display: grid;
+        grid-template-columns: repeat(7, 3rem);
+        grid-template-rows: repeat(6, 2.9rem);
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: .65rem;
+        row-gap: 1.5rem;
+
+        @include m.phone { 
+            gap: 1rem;
+            row-gap: 1.5rem;
+        }
+
+        & > p {
+            margin: 0;
+        }
+    }
+
+    &__day-text {
+        font-weight: 700;
+        user-select: none;
+        color: v.$secondary;
+
+        &:hover {
+            color: lighten(v.$secondary, 15%);
+        }
+    }
+
+    &__day-number {
+        font-weight: 400;
+        color: lighten(v.$secondary, 5%);
+
+        &:hover {
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+    &__pastday-number {
+        font-weight: 400;
+        color: lighten(v.$tertiary_gray, 5%);
+    }
+
+    &__active-day {
+        background-color: v.$primary;
+        color: v.$white;
+        border-radius: 50%;
+        padding: .5rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__to-do {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__actions {
+        // margin-top: -1rem;
+        display: flex;
+        justify-content: flex-end;
+        gap: .4rem;
+    }
+
+    &__plus-icon {
+        width: 2.4rem;
+        height: 2.4rem;
+        color:v.$tertiary;
+
+        &:hover {
+            color: lighten(v.$tertiary, 10%);
+            cursor: pointer;
+        }
+    }
+
+    &__x-mark-icon {
+        width: 2.4rem;
+        height: 2.4rem;
+        color: v.$primary;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__check-icon {
+        width: 2.4rem;
+        height: 2.4rem;
+        color: v.$green;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &--disabled {
+            width: 2.4rem;
+            height: 2.4rem;
+            color: v.$tertiary_gray;
+        }
+    }
+
+    &__textarea {
+        width: 100%;
+        border: none;
+        color: v.$secondary_black;
+        outline: none;
+        resize: none;
+        border-bottom: .2rem solid v.$primary;
+        font-size: 1.4rem;
+
+    }
+
+    &__event {
+
+        & div:nth-child(1) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .5rem;
+        }
+
+        &-day {
+            font-size: 1.3rem;
+            color: lighten(v.$secondary, 5%);
+            margin: 0;
+
+            span {
+                &:nth-child(1) {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        &-cont {
+            display: flex;
+            align-items: center;
+            gap: .1rem;
+        }
+
+        &-time {
+            display: flex;
+            align-items: center;
+            gap: .1rem;
+
+            & p {
+                font-size: 1.5rem;
+                color: v.$tertiary_gray;
+                margin: 0;
+                margin-bottom: .2rem;
+            }
+        }
+
+        &-select {
+            //TODO: de acabar diseño
+            all: unset;
+            width: 2rem;
+            text-align: center;
+            // border-bottom: .2rem solid v.$primary;
+            font-size: 1.3rem;
+            color: v.$tertiary_gray;
+            padding-bottom: .1rem;
+            cursor: pointer;
+        }
+    }
+}
+
