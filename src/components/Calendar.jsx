@@ -35,7 +35,7 @@ const Calendar = ({ activeEvent, setActiveEvent }) => {
     "December",
   ]);
 
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(JSON.parse(localStorage.getItem('events')) || []);
 
   const [text, setText] = useState(
     `${months[date.getMonth()]} ${date.getFullYear()}`
@@ -52,6 +52,11 @@ const Calendar = ({ activeEvent, setActiveEvent }) => {
     handleSetPastDaysArr();
   }, [date]);
 
+
+  useEffect(() => {
+    localStorage.setItem('events', JSON.stringify(events));
+  }, [events])
+  
   const handleSwitchMonth = (direction) => {
     let mon = date.getMonth();
     let year = date.getFullYear();
